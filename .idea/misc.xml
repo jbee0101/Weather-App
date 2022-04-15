@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/drawable/ic_sunny.xml" value="0.1" />
         <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/layout/appbar.xml" value="0.1921875" />
         <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/layout/city_cell.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/layout/city_list_activity.xml" value="0.2" />
+        <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/layout/city_list_activity.xml" value="0.18" />
         <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/Weather-App/app/src/main/res/layout/weather_detail_activity.xml" value="0.1921875" />
         <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Junaid Bashir/Desktop/Challenges/app/src/main/res/layout/appbar.xml" value="0.17074275362318841" />

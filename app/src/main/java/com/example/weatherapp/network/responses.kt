@@ -1,5 +1,7 @@
 package com.example.weatherapp.network
 
+import android.util.Log
+import com.example.weatherapp.R
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,21 +28,17 @@ data class Weather(
     var icon: String? = null
 )
 {
-//    fun publishedTime(source: String): String
-//    {
-//        return if (publishedAt != null) {
-//
-//            val pattern = if (source == "bbc-news")
-//                "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-//            else
-//                "yyyy-MM-dd'T'HH:mm:ss'Z'"
-//
-//            val simpleDateFormat = SimpleDateFormat(pattern, Locale.ENGLISH)
-//            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
-//            val timestamp = Timestamp(simpleDateFormat.parse(publishedAt!!)!!.time)
-//            timestamp.toString()
-//        } else ""
-//    }
+    fun weatherIcon(): Int
+    {
+        Log.e("Response", "weatherIcon: $main")
+
+        return when(main) {
+            "Clouds" -> R.drawable.ic_cloud
+            "Clear" -> R.drawable.ic_sunny
+            "Rain" -> R.drawable.ic_rain
+            else -> R.drawable.ic_cloud
+        }
+    }
 }
 
 data class Coordinates(
@@ -60,6 +58,16 @@ data class MainDetails(
     fun tempInCelsius():String
     {
         return String.format("%.2f", (temp!! - 273.15))
+    }
+
+    fun minTempInCelsius():String
+    {
+        return String.format("%.2f", (temp_min!! - 273.15))
+    }
+
+    fun maxTempInCelsius():String
+    {
+        return String.format("%.2f", (temp_max!! - 273.15))
     }
 }
 

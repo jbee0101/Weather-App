@@ -6,6 +6,7 @@
     tools:context=".ui.CityListActivity">
 
     <data>
+        <import type="android.content.Context"/>
         <variable
             name="item"
             type="com.example.weatherapp.network.CurrentWeatherResponse"/> />
@@ -58,6 +59,7 @@
                     android:text="@{item.weather[0].main}"
                     android:ellipsize="end"
                     android:textSize="20sp"
+                    android:textColor="?attr/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/lblTemp"
                     app:layout_constraintTop_toBottomOf="@+id/lblTemp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +71,8 @@
                     android:layout_height="wrap_content"
                     android:text="@{item.name}"
                     android:ellipsize="end"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:gravity="end"
-                    android:textColor="?attr/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/lblTemp"
                     app:layout_constraintTop_toBottomOf="@+id/lblStatus"
                     tools:text="Lisbon" />
@@ -81,10 +82,10 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_cloud"
+                    app:tint="?attr/colorPrimary"
+                    android:src="@{item.weather[0].weatherIcon}"
                     app:layout_constraintTop_toTopOf="@+id/lblTemp"
                     app:layout_constraintEnd_toEndOf="parent"/>
-
 
                 <ImageView
                     android:id="@+id/ivHumidity"

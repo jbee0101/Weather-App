@@ -25,7 +25,8 @@
             android:id="@+id/cvCurrentWeather"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/appBar">
+            app:layout_constraintTop_toBottomOf="@+id/appBar"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/colCurrentWeather"
@@ -36,6 +37,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
+
+                <ImageView
+                    android:id="@+id/ivWeatherStatus"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    app:tint="?attr/colorPrimary"
+                    android:src="@{item.weather[0].weatherIcon}"
+                    tools:src="@drawable/ic_cloud"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/lblTemp"/>
+
                 <TextView
                     android:id="@+id/lblTemp"
                     android:layout_width="wrap_content"
@@ -44,11 +59,12 @@
                     android:text="@{item.main.tempInCelsius() + `°`}"
                     android:ellipsize="end"
                     android:gravity="start"
-                    android:textSize="50sp"
+                    android:textSize="100sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivWeatherStatus"
+                    app:layout_constraintEnd_toEndOf="parent"
                     tools:text="37" />
 
                 <TextView
@@ -57,10 +73,12 @@
                     android:layout_height="wrap_content"
                     android:text="@{item.weather[0].main}"
                     android:ellipsize="end"
-                    android:textSize="20sp"
+                    android:textSize="35sp"
+                    android:textColor="?attr/colorPrimary"
+                    android:gravity="center"
                     app:layout_constraintStart_toStartOf="@+id/lblTemp"
                     app:layout_constraintTop_toBottomOf="@+id/lblTemp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/lblTemp"
                     tools:text="Cloudy" />
 
                 <TextView
@@ -70,20 +88,12 @@
                     android:text="@{item.name}"
                     android:ellipsize="end"
                     android:textSize="20sp"
-                    android:gravity="end"
-                    android:textColor="?attr/colorPrimary"
+                    android:gravity="center"
                     app:layout_constraintStart_toStartOf="@+id/lblTemp"
+                    app:layout_constraintEnd_toEndOf="@+id/lblTemp"
                     app:layout_constraintTop_toBottomOf="@+id/lblStatus"
                     tools:text="Lisbon" />
 
-                <ImageView
-                    android:id="@+id/ivWeatherStatus"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_cloud"
-                    app:layout_constraintTop_toTopOf="@+id/lblTemp"
-                    app:layout_constraintEnd_toEndOf="parent"/>
 
 
                 <ImageView
@@ -91,26 +101,123 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/humidity"
-                    android:textColor="?attr/colorPrimary"
-                    android:layout_marginEnd="5dp"
-                    app:layout_constraintEnd_toStartOf="@+id/lblHumidity"
-                    app:layout_constraintTop_toBottomOf="@+id/ivWeatherStatus"
+                    app:tint="?attr/colorPrimary"
+                    android:layout_margin="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/lblHumidity"
+                    app:layout_constraintStart_toStartOf="@+id/lblHumidity"
+                    app:layout_constraintTop_toBottomOf="@+id/lblLocation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="50" />
+
+                <TextView
+                    android:id="@+id/lblHumidityValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.main.humidity.toString()}"
+                    android:ellipsize="end"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/lblHumidity"
+                    app:layout_constraintStart_toStartOf="@+id/lblHumidity"
+                    app:layout_constraintTop_toBottomOf="@+id/ivHumidity"
                     tools:text="50" />
 
                 <TextView
                     android:id="@+id/lblHumidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{item.main.humidity.toString()}"
+                    android:text="Humidity"
+                    android:ellipsize="end"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/lblMinTemp"
+                    app:layout_constraintTop_toBottomOf="@+id/lblHumidityValue" />
+
+
+                <ImageView
+                    android:id="@+id/ivMinTemp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_temp"
+                    app:tint="?attr/colorPrimary"
+                    android:layout_margin="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/lblMinTemp"
+                    app:layout_constraintStart_toStartOf="@+id/lblMinTemp"
+                    app:layout_constraintTop_toBottomOf="@+id/lblLocation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="50" />
+
+                <TextView
+                    android:id="@+id/lblMinTempValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.main.minTempInCelsius() + `°`}"
                     android:ellipsize="end"
                     android:textSize="20sp"
-                    android:gravity="end"
+                    android:gravity="center"
                     android:textColor="@color/black"
-                    android:layout_marginStart="10dp"
-                    app:layout_constraintEnd_toEndOf="@+id/ivWeatherStatus"
-                    app:layout_constraintTop_toTopOf="@+id/ivHumidity"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivHumidity"
+                    app:layout_constraintEnd_toEndOf="@+id/lblMinTemp"
+                    app:layout_constraintStart_toStartOf="@+id/lblMinTemp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivMinTemp"
                     tools:text="50" />
+
+                <TextView
+                    android:id="@+id/lblMinTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Min Temperature"
+                    android:ellipsize="end"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/lblHumidity"
+                    app:layout_constraintEnd_toStartOf="@+id/lblMaxTemp"
+                    app:layout_constraintTop_toBottomOf="@+id/lblMinTempValue" />
+
+
+                <ImageView
+                    android:id="@+id/ivMaxTemp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_temp"
+                    android:tint="?attr/colorPrimary"
+                    android:layout_margin="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/lblMaxTemp"
+                    app:layout_constraintStart_toStartOf="@+id/lblMaxTemp"
+                    app:layout_constraintTop_toBottomOf="@+id/lblLocation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="50" />
+
+                <TextView
+                    android:id="@+id/lblMaxTempValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.main.maxTempInCelsius()  + `°`}"
+                    android:ellipsize="end"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/lblMaxTemp"
+                    app:layout_constraintStart_toStartOf="@+id/lblMaxTemp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivMaxTemp"
+                    tools:text="50" />
+
+                <TextView
+                    android:id="@+id/lblMaxTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Max Temperature"
+                    android:ellipsize="end"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/lblMinTemp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblMaxTempValue"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
