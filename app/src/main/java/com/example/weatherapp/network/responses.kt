@@ -2,8 +2,6 @@ package com.example.weatherapp.network
 
 import android.util.Log
 import com.example.weatherapp.R
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
 import java.util.*
 
 data class City(
